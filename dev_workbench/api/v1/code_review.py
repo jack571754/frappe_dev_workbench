@@ -358,7 +358,9 @@ def _expire():
         attempt = frappe.get_doc(ATTEMPT, task.current_attempt)
         if get_datetime(attempt.lease_until) > now_datetime():
             continue
-        frappe.db.set_value(TASK, task.name, 'status', 'interrupted')
+        recover = (task.review_mode == 'scan' and frappe.db.count(ATTEMPT,
+            {'task': task.name, 'status': 'interrupted'}) < 3)
+        frappe.db.set_value(TASK, task.name, 'status', 'queued' if recover else 'interrupted')
         frappe.db.set_value(ATTEMPT, attempt.name, {'status': 'interrupted',
             'finished_at': now_datetime(), 'error': '执行端离线或租约超时，请手动重试'})
 
@@ -566,7 +568,7 @@ def cancel_task(name):
 
 
 @frappe.whitelist(methods=['POST'])
-def retry_task(name):
+def retry_task(name, restart=0):
     require_manager()
     _expire()
     task = _visible(_task(name, lock=True))
@@ -574,7 +576,8 @@ def retry_task(name):
         frappe.throw('任务尚未结束')
     _require_repositories([task.repository], task.review_mode or 'commit')
     frappe.db.set_value(TASK, name, {'status': 'queued', 'review_status': 'pending',
-        'current_attempt': None, 'reviewed_at': None, 'reviewer': None})
+        'current_attempt': None, 'reviewed_at': None, 'reviewer': None,
+        'checkpoint_generation': (task.get('checkpoint_generation') or 0) + (1 if frappe.utils.cint(restart) else 0)})
     return {'ok': True}
 
 
@@ -625,7 +628,8 @@ def claim_task(tool_version=''):
     frappe.db.set_value(TASK, task.name, {'status': 'preparing', 'current_attempt': attempt.name})
     return {'name': task.name, 'attempt': attempt.name, 'repository': task.repository,
             'head_sha': task.head_sha, 'base_sha': task.base_sha, 'lease_token': token,
-            'review_mode': task.review_mode or 'commit'}
+            'review_mode': task.review_mode or 'commit',
+            'checkpoint_generation': task.get('checkpoint_generation') or 0}
 
 
 @frappe.whitelist(allow_guest=True, methods=['POST'])

@@ -1,4 +1,5 @@
 import json
+import time
 import urllib.error
 import urllib.request
 from urllib.parse import urlparse
@@ -22,7 +23,19 @@ class Client:
         data = json.dumps(params, ensure_ascii=False).encode()
         request = urllib.request.Request(self.url + '/api/method/dev_workbench.api.v1.code_review.' + method,
             data=data, headers={'Content-Type': 'application/json', 'X-Review-Token': self.token})
-        with self.opener.open(request, timeout=25) as response:
+        for attempt in range(3):
+            try:
+                return self._response(request, method)
+            except (urllib.error.URLError, TimeoutError, ConnectionError) as error:
+                retryable = method in ('heartbeat', 'preparation_heartbeat', 'report_repositories')
+                if isinstance(error, urllib.error.HTTPError) and error.code not in (502, 503, 504):
+                    retryable = False
+                if not retryable or attempt == 2:
+                    raise
+                time.sleep(2 * (attempt + 1))
+
+    def _response(self, request, method):
+        with self.opener.open(request, timeout=15) as response:
             payload = json.loads(response.read(10_000_000))
             # Frappe omits message when a whitelisted method returns None.
             if method in ('claim_task', 'claim_repository_preparation') and payload == {}:

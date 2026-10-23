@@ -183,8 +183,21 @@ def execute(config, client, task, config_path=None):
             heartbeat, limit=100_000_000, env=git_environment()))
         client.call('upload_materials', **lease, materials=materials)
         if config.get('engine', 'open-code-review') == 'open-code-review':
-            from ocr_engine import execute as execute_ocr
-            report, raw = execute_ocr(config, materials, snapshot / 'repository', container, heartbeat)
+            from ocr_engine import execute as execute_ocr, provider_environment, VERSION
+            from checkpoints import checkpoint_directory
+            run_config = dict(config)
+            repository_root = snapshot / 'repository'
+            if task.get('review_mode') == 'scan':
+                provider = provider_environment(config)
+                identity = {key: provider[key] for key in
+                    ('OCR_LLM_URL', 'OCR_LLM_MODEL', 'OCR_LLM_PROTOCOL')}
+                identity['version'] = VERSION
+                identity['materials'] = __import__('hashlib').sha256(
+                    json.dumps(materials, sort_keys=True).encode()).hexdigest()
+                checkpoint = checkpoint_directory(root.parent, task, identity)
+                run_config['_checkpoint'] = str(checkpoint)
+                repository_root = checkpoint / 'repository'
+            report, raw = execute_ocr(run_config, materials, repository_root, container, heartbeat)
             client.call('upload_report', **lease, report=report, raw_report=raw)
             print('OpenCodeReview 审查完成：' + task['name'], flush=True)
             return

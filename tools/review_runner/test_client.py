@@ -1,11 +1,26 @@
 import json
 import unittest
 from unittest.mock import MagicMock
+from unittest.mock import patch
+import urllib.error
 
 from client import Client
 
 
 class ClientTests(unittest.TestCase):
+    def test_heartbeat_retries_transient_connection_but_not_authorization(self):
+        client = self.client({'message': {'status': 'running'}})
+        response = client.opener.open.return_value
+        client.opener.open.side_effect = [urllib.error.URLError('offline'), response]
+        with patch('client.time.sleep'):
+            self.assertEqual(client.call('heartbeat')['status'], 'running')
+        self.assertEqual(client.opener.open.call_count, 2)
+        client.opener.open.reset_mock()
+        client.opener.open.side_effect = urllib.error.HTTPError('local', 403, 'denied', {}, None)
+        with self.assertRaises(urllib.error.HTTPError):
+            client.call('heartbeat')
+        self.assertEqual(client.opener.open.call_count, 1)
+
     def client(self, payload):
         client = Client('http://127.0.0.1:8000', 'synthetic')
         response = MagicMock()

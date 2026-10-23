@@ -10,6 +10,25 @@ from dev_workbench.api.v1 import code_review as api
 
 
 class ReviewApiTests(unittest.TestCase):
+    def test_expired_scan_is_requeued_with_history_preserved(self):
+        frappe.db.set_value(api.TASK, self.task.name, 'review_mode', 'scan')
+        api.report_repositories({'synthetic': 'ready'}, modes=['scan'])
+        claimed = self.claim()
+        frappe.db.set_value(api.ATTEMPT, claimed['attempt'], 'lease_until',
+                            add_to_date(now_datetime(), seconds=-10))
+        api._expire()
+        self.assertEqual(frappe.db.get_value(api.TASK, self.task.name, 'status'), 'queued')
+        self.assertEqual(frappe.db.get_value(api.ATTEMPT, claimed['attempt'], 'status'), 'interrupted')
+
+    def test_continue_preserves_generation_restart_changes_it(self):
+        frappe.db.set_value(api.TASK, self.task.name, {'status': 'interrupted', 'checkpoint_generation': 2})
+        with patch.object(api, '_expire'), patch.object(api, '_require_repositories'):
+            api.retry_task(self.task.name)
+            self.assertEqual(frappe.db.get_value(api.TASK, self.task.name, 'checkpoint_generation'), 2)
+            frappe.db.set_value(api.TASK, self.task.name, 'status', 'interrupted')
+            api.retry_task(self.task.name, restart=1)
+            self.assertEqual(frappe.db.get_value(api.TASK, self.task.name, 'checkpoint_generation'), 3)
+
     def setUp(self):
         self.user = frappe.session.user
         frappe.set_user('Administrator')

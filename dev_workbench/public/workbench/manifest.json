@@ -4,7 +4,7 @@
     "name": "reviewPresentation"
   },
   "index.html": {
-    "file": "assets/index.DbpCy0aB.js",
+    "file": "assets/index.CSPSNlHC.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
@@ -29,7 +29,7 @@
     "src": "node_modules/frappe-ui/src/fonts/Inter/Inter.var.woff2"
   },
   "src/pages/CodeReviewDetailPage.vue": {
-    "file": "assets/CodeReviewDetailPage.1YbQ1dQW.js",
+    "file": "assets/CodeReviewDetailPage.Ci1tlUjh.js",
     "name": "CodeReviewDetailPage",
     "src": "src/pages/CodeReviewDetailPage.vue",
     "isDynamicEntry": true,
@@ -38,11 +38,11 @@
       "_reviewPresentation.BRrgIi0t.js"
     ],
     "css": [
-      "assets/CodeReviewDetailPage.CAv_eyGm.css"
+      "assets/CodeReviewDetailPage.DbuNVy92.css"
     ]
   },
   "src/pages/CodeReviewPage.vue": {
-    "file": "assets/CodeReviewPage.BzJz2_kb.js",
+    "file": "assets/CodeReviewPage.BHSN2UDD.js",
     "name": "CodeReviewPage",
     "src": "src/pages/CodeReviewPage.vue",
     "isDynamicEntry": true,

@@ -10,7 +10,8 @@
         <select v-if="task.attempts?.length" v-model="attemptName" @change="load" aria-label="报告版本" title="选择历史报告"><option v-for="a in task.attempts" :key="a.name" :value="a.name">{{ a.started_at || a.creation }} · {{ states[a.status] || a.status }}</option></select>
         <button class="btn-secondary" @click="load" :disabled="busy">刷新</button>
         <button v-if="activeStates.includes(task.status)" class="btn-secondary" @click="action('cancel_task')" :disabled="busy">取消任务</button>
-        <button v-else class="btn-secondary" @click="action('retry_task')" :disabled="busy || task.readiness?.status !== 'ready'" :title="task.readiness?.message">重新审查</button>
+        <button v-else class="btn-secondary" @click="action('retry_task')" :disabled="busy || task.readiness?.status !== 'ready'" :title="task.readiness?.message">{{ task.review_mode === 'scan' ? '继续审查' : '重新审查' }}</button>
+        <button v-if="task.review_mode === 'scan' && !activeStates.includes(task.status)" class="btn-secondary" :disabled="busy" @click="action('retry_task', true)">重新开始</button>
         <button class="btn-secondary" @click="copyFeedback" :disabled="!confirmed.length">复制已确认问题 ({{ confirmed.length }})</button>
         <button v-if="['completed','partial'].includes(task.status) && !historical" class="btn-primary" @click="action('complete_review')" :disabled="busy || pendingCount > 0 || task.review_status === 'completed'">完成复核</button>
       </div>
@@ -88,9 +89,9 @@ async function load() {
   } catch (e) { if (alive && current === generation) error.value = e.message }
   finally { if (alive && current === generation) loading.value = false }
 }
-async function action(method) {
+async function action(method, restart = false) {
   busy.value = true; message.value = ''
-  try { await reviewApi(method, { name: task.value.name }, true); if (method === 'retry_task') attemptName.value = ''; await load() }
+  try { await reviewApi(method, { name: task.value.name, restart: restart ? 1 : 0 }, true); if (method === 'retry_task') attemptName.value = ''; await load() }
   catch (e) { error.value = e.message } finally { busy.value = false }
 }
 async function save(f, decision) {
