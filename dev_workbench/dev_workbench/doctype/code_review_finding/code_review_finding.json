@@ -1,0 +1,137 @@
+{
+ "doctype": "DocType",
+ "name": "Code Review Finding",
+ "module": "Dev Workbench",
+ "autoname": "hash",
+ "engine": "InnoDB",
+ "field_order": [
+  "task",
+  "attempt",
+  "severity",
+  "title",
+  "path",
+  "side",
+  "line",
+  "end_line",
+  "located",
+  "trigger",
+  "impact",
+  "evidence",
+  "suggestion",
+  "uncertainty",
+  "decision",
+  "note",
+  "reviewer",
+  "reviewed_at",
+  "feedback_at"
+ ],
+ "fields": [
+  {
+   "fieldname": "task",
+   "label": "task",
+   "fieldtype": "Link",
+   "options": "Code Review Task"
+  },
+  {
+   "fieldname": "attempt",
+   "label": "attempt",
+   "fieldtype": "Link",
+   "options": "Code Review Attempt"
+  },
+  {
+   "fieldname": "severity",
+   "label": "severity",
+   "fieldtype": "Select",
+   "options": "high\nmedium\nlow\nsuggestion"
+  },
+  {
+   "fieldname": "title",
+   "label": "title",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "path",
+   "label": "path",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "side",
+   "label": "side",
+   "fieldtype": "Select",
+   "options": "old\nnew"
+  },
+  {
+   "fieldname": "line",
+   "label": "line",
+   "fieldtype": "Int"
+  },
+  {
+   "fieldname": "end_line",
+   "label": "end_line",
+   "fieldtype": "Int"
+  },
+  {
+   "fieldname": "located",
+   "label": "located",
+   "fieldtype": "Check"
+  },
+  {
+   "fieldname": "trigger",
+   "label": "trigger",
+   "fieldtype": "Long Text"
+  },
+  {
+   "fieldname": "impact",
+   "label": "impact",
+   "fieldtype": "Long Text"
+  },
+  {
+   "fieldname": "evidence",
+   "label": "evidence",
+   "fieldtype": "Long Text"
+  },
+  {
+   "fieldname": "suggestion",
+   "label": "suggestion",
+   "fieldtype": "Long Text"
+  },
+  {
+   "fieldname": "uncertainty",
+   "label": "uncertainty",
+   "fieldtype": "Long Text"
+  },
+  {
+   "fieldname": "decision",
+   "label": "decision",
+   "fieldtype": "Select",
+   "options": "pending\nconfirmed\nignored",
+   "default": "pending"
+  },
+  {
+   "fieldname": "note",
+   "label": "note",
+   "fieldtype": "Long Text"
+  },
+  {
+   "fieldname": "reviewer",
+   "label": "reviewer",
+   "fieldtype": "Link",
+   "options": "User"
+  },
+  {
+   "fieldname": "reviewed_at",
+   "label": "reviewed_at",
+   "fieldtype": "Datetime"
+  },
+  {
+   "fieldname": "feedback_at",
+   "label": "feedback_at",
+   "fieldtype": "Datetime"
+  }
+ ],
+ "permissions": [],
+ "track_changes": 0,
+ "sort_field": "creation",
+ "sort_order": "DESC"
+}
+

@@ -1,0 +1,96 @@
+{
+ "doctype": "DocType",
+ "name": "Code Review Executor",
+ "module": "Dev Workbench",
+ "autoname": "hash",
+ "engine": "InnoDB",
+ "field_order": [
+  "label",
+  "token_hash",
+  "enabled",
+  "last_seen",
+  "tool_version",
+  "capabilities",
+  "capabilities_at",
+  "data_root",
+  "settings_revision",
+  "environment",
+  "environment_at",
+  "environment_request"
+ ],
+ "fields": [
+  {
+   "fieldname": "label",
+   "label": "label",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "token_hash",
+   "label": "token_hash",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "enabled",
+   "label": "enabled",
+   "fieldtype": "Check",
+   "default": "1"
+  },
+  {
+   "fieldname": "last_seen",
+   "label": "last_seen",
+   "fieldtype": "Datetime"
+  },
+  {
+   "fieldname": "tool_version",
+   "label": "tool_version",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "capabilities",
+   "label": "仓库检查结果",
+   "fieldtype": "Long Text",
+   "read_only": 1
+  },
+  {
+   "fieldname": "capabilities_at",
+   "label": "仓库检查时间",
+   "fieldtype": "Datetime",
+   "read_only": 1
+  },
+  {
+   "fieldname": "data_root",
+   "label": "数据目录",
+   "fieldtype": "Data",
+   "description": "本机执行端保存配置与下载缓存的位置，留空使用默认值。"
+  },
+  {
+   "fieldname": "settings_revision",
+   "label": "设置版本",
+   "fieldtype": "Int",
+   "default": "1",
+   "read_only": 1
+  },
+  {
+   "fieldname": "environment",
+   "label": "环境检查结果",
+   "fieldtype": "Long Text",
+   "read_only": 1
+  },
+  {
+   "fieldname": "environment_at",
+   "label": "环境检查时间",
+   "fieldtype": "Datetime",
+   "read_only": 1
+  },
+  {
+   "fieldname": "environment_request",
+   "label": "环境操作请求",
+   "fieldtype": "Data",
+   "read_only": 1
+  }
+ ],
+ "permissions": [],
+ "track_changes": 0,
+ "sort_field": "creation",
+ "sort_order": "DESC"
+}

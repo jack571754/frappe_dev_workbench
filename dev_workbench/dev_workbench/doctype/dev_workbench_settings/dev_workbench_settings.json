@@ -1,0 +1,171 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "creation": "2026-10-14 13:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "codeup_section",
+  "codeup_organization_id",
+  "codeup_access_token",
+  "codeup_token_expires_at",
+  "codeup_token_alert_days",
+  "codeup_base_url",
+  "ai_section",
+  "ai_enabled",
+  "ai_base_url",
+  "ai_api_key",
+  "ai_model",
+  "ai_temperature",
+  "ai_max_tokens",
+  "feishu_section",
+  "feishu_enabled",
+  "feishu_app_id",
+  "feishu_app_secret"
+ ],
+ "fields": [
+  {
+   "fieldname": "codeup_section",
+   "fieldtype": "Section Break",
+   "label": "Codeup 全局认证配置"
+  },
+  {
+   "default": "64c8b550dcc8d50d3cc7f5b4",
+   "description": "全局默认云效组织 ID，单库未配置时默认继承该组织",
+   "fieldname": "codeup_organization_id",
+   "fieldtype": "Data",
+   "label": "默认云效组织 ID"
+  },
+  {
+   "description": "阿里云云效 OpenAPI 个人访问令牌 (x-yunxiao-token)，单库未配置时全局复用",
+   "fieldname": "codeup_access_token",
+   "fieldtype": "Password",
+   "label": "全局访问令牌 (Token)"
+  },
+  {
+   "description": "全局访问令牌到期日期，用于到期提前预警",
+   "fieldname": "codeup_token_expires_at",
+   "fieldtype": "Date",
+   "label": "全局令牌到期日期"
+  },
+  {
+   "default": "7",
+   "description": "提前多少天开始发出令牌到期预警，默认 7 天",
+   "fieldname": "codeup_token_alert_days",
+   "fieldtype": "Int",
+   "label": "提前预警天数"
+  },
+  {
+   "default": "https://openapi-rdc.aliyuncs.com",
+   "description": "Codeup OpenAPI 服务地址",
+   "fieldname": "codeup_base_url",
+   "fieldtype": "Data",
+   "label": "Codeup API 基础地址"
+  },
+  {
+   "fieldname": "ai_section",
+   "fieldtype": "Section Break",
+   "label": "AI 摘要模型配置 (OpenAI 兼容)"
+  },
+  {
+   "default": "1",
+   "fieldname": "ai_enabled",
+   "fieldtype": "Check",
+   "label": "启用 AI 摘要生成"
+  },
+  {
+   "default": "https://api.openai.com/v1",
+   "description": "兼容 OpenAI 规范的 API Base URL，如 https://api.openai.com/v1 或阿里云百炼、DeepSeek、Moonshot 等",
+   "fieldname": "ai_base_url",
+   "fieldtype": "Data",
+   "label": "API 基础地址 (Base URL)"
+  },
+  {
+   "description": "调用模型服务商的访问令牌",
+   "fieldname": "ai_api_key",
+   "fieldtype": "Password",
+   "label": "API Key / 访问令牌"
+  },
+  {
+   "default": "gpt-4o-mini",
+   "description": "模型标识，例如 gpt-4o-mini, qwen-plus, deepseek-chat 等",
+   "fieldname": "ai_model",
+   "fieldtype": "Data",
+   "label": "模型名称 (Model)"
+  },
+  {
+   "default": "0.3",
+   "description": "生成温度，建议 0.1 ~ 0.5 之间以确保输出摘要稳定准确",
+   "fieldname": "ai_temperature",
+   "fieldtype": "Float",
+   "label": "采样温度 (Temperature)"
+  },
+  {
+   "default": "150",
+   "description": "单次回复最大 Token 数，摘要一般无需超过 200",
+   "fieldname": "ai_max_tokens",
+   "fieldtype": "Int",
+   "label": "最大 Token 数 (Max Tokens)"
+  },
+  {
+   "fieldname": "feishu_section",
+   "fieldtype": "Section Break",
+   "label": "飞书推送配置"
+  },
+  {
+   "default": "1",
+   "fieldname": "feishu_enabled",
+   "fieldtype": "Check",
+   "label": "启用飞书日报推送"
+  },
+  {
+   "fieldname": "feishu_app_id",
+   "fieldtype": "Data",
+   "label": "飞书 App ID"
+  },
+  {
+   "fieldname": "feishu_app_secret",
+   "fieldtype": "Password",
+   "label": "飞书 App Secret"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-10-14 13:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Dev Workbench",
+ "name": "Dev Workbench Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 0,
+   "print": 0,
+   "read": 1,
+   "report": 0,
+   "role": "System Manager",
+   "share": 0,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 0,
+   "print": 0,
+   "read": 1,
+   "report": 0,
+   "role": "Dev Workbench Manager",
+   "share": 0,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

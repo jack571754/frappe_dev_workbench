@@ -1,0 +1,145 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "format:ABS-{####}",
+ "creation": "2026-10-14 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "member",
+  "member_name",
+  "check_date",
+  "consecutive_workdays",
+  "absent_dates",
+  "status",
+  "column_break_info",
+  "is_exempted",
+  "exemption_reason",
+  "last_commit_date",
+  "last_commit_repo",
+  "notified_feishu"
+ ],
+ "fields": [
+  {
+   "fieldname": "member",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "项目成员",
+   "options": "Project Member",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "member.member_name",
+   "fieldname": "member_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "成员姓名",
+   "read_only": 1
+  },
+  {
+   "fieldname": "check_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "检测日期",
+   "reqd": 1
+  },
+  {
+   "default": "2",
+   "fieldname": "consecutive_workdays",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "连续缺勤工作日数"
+  },
+  {
+   "description": "缺勤的工作日列表，如 2026-10-13, 2026-10-14",
+   "fieldname": "absent_dates",
+   "fieldtype": "Small Text",
+   "label": "缺勤工作日"
+  },
+  {
+   "default": "待跟进",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "跟进状态",
+   "options": "待跟进\n已豁免\n已跟进"
+  },
+  {
+   "fieldname": "column_break_info",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_exempted",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "是否请假豁免"
+  },
+  {
+   "fieldname": "exemption_reason",
+   "fieldtype": "Small Text",
+   "label": "豁免原因"
+  },
+  {
+   "fieldname": "last_commit_date",
+   "fieldtype": "Date",
+   "label": "最近一次提交日期",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_commit_repo",
+   "fieldtype": "Data",
+   "label": "最近提交代码库",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "notified_feishu",
+   "fieldtype": "Check",
+   "label": "是否已推送飞书通知"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-10-14 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Dev Workbench",
+ "name": "Absence Record",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Dev Workbench Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "check_date",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "member_name"
+}

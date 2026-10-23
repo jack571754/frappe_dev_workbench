@@ -1,0 +1,61 @@
+{
+ "doctype": "DocType",
+ "name": "Code Review Repository Preparation",
+ "module": "Dev Workbench",
+ "autoname": "hash",
+ "engine": "InnoDB",
+ "field_order": [
+  "repository",
+  "executor",
+  "status",
+  "requested_by",
+  "lease_hash",
+  "lease_until",
+  "error"
+ ],
+ "fields": [
+  {
+   "fieldname": "repository",
+   "label": "repository",
+   "fieldtype": "Link",
+   "options": "Codeup Repository"
+  },
+  {
+   "fieldname": "executor",
+   "label": "executor",
+   "fieldtype": "Link",
+   "options": "Code Review Executor"
+  },
+  {
+   "fieldname": "status",
+   "label": "status",
+   "fieldtype": "Select",
+   "options": "queued\npreparing\ncompleted\nfailed"
+  },
+  {
+   "fieldname": "requested_by",
+   "label": "requested_by",
+   "fieldtype": "Link",
+   "options": "User"
+  },
+  {
+   "fieldname": "lease_hash",
+   "label": "lease_hash",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "lease_until",
+   "label": "lease_until",
+   "fieldtype": "Datetime"
+  },
+  {
+   "fieldname": "error",
+   "label": "error",
+   "fieldtype": "Small Text"
+  }
+ ],
+ "permissions": [],
+ "track_changes": 0,
+ "sort_field": "creation",
+ "sort_order": "DESC"
+}

@@ -1,117 +1,70 @@
-<div align="center">
-  <img src="docs/public/frappe-docker.png" alt="Frappe Docker" width="80" />
-  <h1>Frappe Docker</h1>
-  <p>Docker images and orchestration for Frappe applications.</p>
-  <p>
-    <a href="https://github.com/frappe/frappe_docker/actions/workflows/core-build-stable.yml">
-      <img src="https://img.shields.io/github/actions/workflow/status/frappe/frappe_docker/core-build-stable.yml?branch=main&label=Build%20Stable" alt="Build Stable" />
-    </a>
-    <a href="https://github.com/frappe/frappe_docker/actions/workflows/core-build-develop.yml">
-      <img src="https://img.shields.io/github/actions/workflow/status/frappe/frappe_docker/core-build-develop.yml?branch=main&label=Build%20Develop" alt="Build Develop" />
-    </a>
-    <a href="https://frappe.github.io/frappe_docker/">
-      <img src="https://img.shields.io/badge/Docs-Open%20Site-0A7EA4" alt="Docs" />
-    </a>
-  </p>
-</div>
+# Dev Workbench (研发工作台)
 
-## What is this?
+> 面向研发团队的全链路效能度量与自动化协同平台，基于 **Frappe Framework** 与 **Vue 3 SPA** 构建。
 
-This repository is the official container setup for Frappe applications.
+---
 
-It provides Docker images, Compose configurations, and documentation for running Frappe applications, including ERPNext, CRM, Helpdesk, and other Frappe apps, in containers.
+## 📌 功能概览与核心特性
 
-Use it if you want to:
+- **代码活动自动采集**：无缝对接阿里云云效 (Codeup API)，自动化增量抓取 Git 提交、核算增减行数与修改文件数；
+- **智能身份闭环体系**：支持一人多 Git 邮箱/用户名别名绑定，支持未归属提交隔离与一键认领；
+- **大模型 AI 摘要提炼**：接入主流 LLM 大模型（DeepSeek / Qwen / OpenAI），自动过滤 Merge 杂音，提炼每日真实业务功能产出；
+- **智能考勤与豁免判定**：工作日下班后自动排查无产出异常，支持考勤豁免实时流转与请假对齐；
+- **飞书富文本互动卡片**：工作日定时自动推送精美飞书卡片至主管与研发大群，支持在线重推与历史回溯；
+- **决策级看板 (Vue 3 SPA)**：通过 Frappe Apps/Workspace 入口独立访问，支持 12 周活跃度趋势折线图、多维度横向项目对比与个人聚焦。
 
-- run ERPNext, CRM, Helpdesk, or other Frappe apps with Docker
-- start from a quick demo setup
-- use production-ready Docker images and Compose setups
-- build custom app images
-- deploy and operate Frappe in production
+---
 
-## Repository Structure
+## 📖 详细设计与流程拆解文档
+
+系统完整的设计架构、数据模型与六大核心业务流程已归档至专门文档：
+
+👉 **[完整功能架构与流程拆解文档 (dev_workbench_architecture_and_flow.md)](./docs/dev_workbench_architecture_and_flow.md)**
+
+- [1. 系统定位与核心价值](./docs/dev_workbench_architecture_and_flow.md#1-系统定位与核心价值)
+- [2. 总体系统架构与技术栈](./docs/dev_workbench_architecture_and_flow.md#2-总体系统架构与技术栈)
+- [3. 核心数据模型 (DocTypes) 设计](./docs/dev_workbench_architecture_and_flow.md#3-核心数据模型-doctypes-设计)
+- [4. 六大核心业务流程拆解 (Mermaid 流程图)](./docs/dev_workbench_architecture_and_flow.md#4-六大核心业务流程拆解)
+- [5. API 接口清单与路由映射规范](./docs/dev_workbench_architecture_and_flow.md#5-api-接口清单与路由映射规范)
+- [6. 定时任务 (Scheduler Events) 调度清单](./docs/dev_workbench_architecture_and_flow.md#6-定时任务-scheduler-events-调度清单)
+- [7. 研发看板 (Vue SPA) 页面功能矩阵](./docs/dev_workbench_architecture_and_flow.md#7-研发看板-vue-spa-页面功能矩阵)
+
+---
+
+## 🚀 安装与部署
 
 ```bash
-frappe_docker/
-├── docs/                 # Complete documentation
-├── overrides/            # Docker Compose configurations for different scenarios
-├── compose.yaml          # Base Compose File for production setups
-├── pwd.yml               # Single Compose File for quick disposable demo
-├── images/               # Dockerfiles for building Frappe images
-├── development/          # Development environment configurations
-├── devcontainer-example/ # VS Code devcontainer setup
-└── resources/            # Helper scripts and configuration templates
+cd $PATH_TO_YOUR_BENCH
+bench get-app $URL_OF_THIS_REPO --branch version-16
+bench install-app dev_workbench
+bench --site development.localhost migrate
 ```
 
-> This section describes the structure of **this repository**, not the Frappe framework itself.
+### 前端 SPA 构建
 
-### Key Components
-
-- `docs/` - Canonical documentation for all deployment and operational workflows
-- `overrides/` - Opinionated Compose overrides for common deployment patterns
-- `compose.yaml` - Base compose file for production setups (production)
-- `pwd.yml` - Disposable demo environment (non-production)
-
-## Documentation
-
-The full `frappe_docker` documentation is available in [`docs/`](docs/) and published at [frappe.github.io/frappe_docker](https://frappe.github.io/frappe_docker/).
-
-### Recommended entry points:
-
-- **New here:** [Getting Started Guide](docs/getting-started.md)
-- **Choosing a setup:** [Deployment methods](docs/01-getting-started/01-choosing-a-deployment-method.md)
-- **ARM64 notes:** [ARM64](docs/01-getting-started/03-arm64.md)
-- **Container setup overview:** [Container Setup Overview](docs/02-setup/01-overview.md)
-- **Running in production:** [Production docs](docs/03-production/)
-- **Operating a deployment:** [Operations docs](docs/04-operations/)
-- **Development workflows:** [Development](docs/05-development/01-development.md)
-- **FAQ:** [Frequently Asked Questions](https://github.com/frappe/frappe_docker/wiki/Frequently-Asked-Questions)
-
-## Prerequisites
-
-- [Docker](https://docs.docker.com/get-docker/)
-- [Docker Compose v2](https://docs.docker.com/compose/)
-- [git](https://docs.github.com/en/get-started/getting-started-with-git/set-up-git)
-
-> For Docker basics and best practices refer to Docker's [documentation](http://docs.docker.com)
-
-## Demo setup
-
-The fastest way to try Frappe locally is with the single-file demo setup in `pwd.yml`.
-
-### Try on your environment
-
-> **⚠️ Disposable demo only**
->
-> **This setup is intended for short-lived evaluation only.** You will not be able to install custom apps to this setup. For production deployments, custom configurations, and detailed explanations, see the full documentation.
-
-First clone the repo:
-
-```sh
-git clone https://github.com/frappe/frappe_docker
-cd frappe_docker
+```bash
+cd apps/dev_workbench/frontend
+npm ci
+npm run build
 ```
 
-Then run:
+SPA 固定托管于 `/dev-workbench`，业务操作通过 Frappe 标准
+`/api/method/dev_workbench.api.v1.*` 接口访问，普通 DocType 列表使用 Frappe Resource API。
 
-```sh
-docker compose -f pwd.yml up -d
+---
+
+## 🛠 代码规范与贡献
+
+本项目采用 `pre-commit` 统一管理代码格式化和检查：
+
+```bash
+cd apps/dev_workbench
+pre-commit install
+pre-commit run --all-files
 ```
 
-Wait for a couple of minutes for ERPNext site to be created or check `create-site` container logs before opening browser on port `8080`. (username: `Administrator`, password: `admin`)
+---
 
-## Contributing
+## 📄 开源许可证
 
-Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-This repository is only for container related stuff. You also might want to contribute to:
-
-## Resources
-
-- [Frappe framework](https://github.com/frappe/frappe),
-- [ERPNext](https://github.com/frappe/erpnext),
-- [Frappe Bench](https://github.com/frappe/bench).
-
-## License
-
-This repository is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+MIT License

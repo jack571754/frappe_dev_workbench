@@ -1,0 +1,181 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "format:ACT-{####}",
+ "creation": "2026-10-14 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "member",
+  "member_name",
+  "activity_date",
+  "project",
+  "commit_count",
+  "total_lines",
+  "file_count",
+  "branch_scope",
+  "is_unclaimed",
+  "column_break_stats",
+  "lines_added",
+  "lines_deleted",
+  "lines_unknown",
+  "section_break_summary",
+  "summary",
+  "section_break_raw",
+  "raw_json"
+ ],
+ "fields": [
+  {
+   "fieldname": "member",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "成员",
+   "options": "Project Member"
+  },
+  {
+   "fetch_from": "member.member_name",
+   "fieldname": "member_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "成员姓名",
+   "read_only": 1
+  },
+  {
+   "fieldname": "activity_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "活动日期",
+   "reqd": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "所属项目",
+   "options": "Project"
+  },
+  {
+   "default": "0",
+   "fieldname": "commit_count",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "提交数"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_lines",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "变更代码行数"
+  },
+  {
+   "default": "0",
+   "fieldname": "file_count",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "涉及文件数"
+  },
+  {
+   "default": "all",
+   "fieldname": "branch_scope",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "统计范围",
+   "options": "all\ndefault"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_unclaimed",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "未归属提交"
+  },
+  {
+   "fieldname": "column_break_stats",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "lines_added",
+   "fieldtype": "Int",
+   "label": "新增行数"
+  },
+  {
+   "default": "0",
+   "fieldname": "lines_deleted",
+   "fieldtype": "Int",
+   "label": "删除行数"
+  },
+  {
+   "default": "0",
+   "fieldname": "lines_unknown",
+   "fieldtype": "Check",
+   "label": "行数未知"
+  },
+  {
+   "fieldname": "section_break_summary",
+   "fieldtype": "Section Break",
+   "label": "提交摘要"
+  },
+  {
+   "fieldname": "summary",
+   "fieldtype": "Small Text",
+   "label": "提交摘要 (AI 生成)"
+  },
+  {
+   "fieldname": "section_break_raw",
+   "fieldtype": "Section Break",
+   "label": "原始数据"
+  },
+  {
+   "fieldname": "raw_json",
+   "fieldtype": "Code",
+   "label": "原始提交数据 (JSON)",
+   "options": "JSON"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-10-14 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Dev Workbench",
+ "name": "Daily Activity Log",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Dev Workbench Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "activity_date",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "member_name"
+}

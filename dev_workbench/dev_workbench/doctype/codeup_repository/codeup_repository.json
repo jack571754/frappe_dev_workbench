@@ -1,0 +1,155 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "field:repository_name",
+ "creation": "2026-10-14 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "repository_name",
+  "org_id",
+  "repo_id",
+  "access_token",
+  "token_expires_at",
+  "default_branch",
+  "is_active",
+  "column_break_info",
+  "description",
+  "last_sync_at",
+  "last_sync_status",
+  "last_sync_message",
+  "section_break_rules",
+  "exclude_rules"
+ ],
+ "fields": [
+  {
+   "fieldname": "repository_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "仓库名称",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "org_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "组织 ID (可选覆盖)",
+   "description": "特定覆盖组织 ID。留空则自动继承【研发工作台设置】中的全局组织 ID"
+  },
+  {
+   "fieldname": "repo_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "代码库 ID",
+   "reqd": 1
+  },
+  {
+   "fieldname": "access_token",
+   "fieldtype": "Password",
+   "label": "访问令牌 Token (可选覆盖)",
+   "description": "特定覆盖访问令牌。留空则自动继承【研发工作台设置】中的全局访问令牌"
+  },
+  {
+   "fieldname": "token_expires_at",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "令牌到期日期 (可选覆盖)",
+   "description": "特定覆盖到期日期。留空则自动继承【研发工作台设置】中的全局到期日期"
+  },
+  {
+   "default": "master",
+   "fieldname": "default_branch",
+   "fieldtype": "Data",
+   "label": "默认分支"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "启用"
+  },
+  {
+   "fieldname": "column_break_info",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "仓库描述"
+  },
+  {
+   "fieldname": "last_sync_at",
+   "fieldtype": "Datetime",
+   "label": "最近同步时间",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_sync_status",
+   "fieldtype": "Data",
+   "label": "最近同步状态",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_sync_message",
+   "fieldtype": "Small Text",
+   "label": "最近同步结果",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_rules",
+   "fieldtype": "Section Break",
+   "label": "排除文件规则"
+  },
+  {
+   "description": "多行 Glob 规则，每行一条。例如：*.lock、dist/**、node_modules/**",
+   "fieldname": "exclude_rules",
+   "fieldtype": "Code",
+   "label": "排除规则 (Glob)",
+   "options": "Text"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-10-14 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Dev Workbench",
+ "name": "Codeup Repository",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Dev Workbench Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "repository_name"
+}

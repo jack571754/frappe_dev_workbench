@@ -1,0 +1,7 @@
+FROM dev-workbench-review:2.1.306
+USER root
+# 版本固定见 ocr.version，避免把框架源码克隆进工程。
+ARG OCR_NPM_VERSION=1.13.2
+RUN npm install --global @alibaba-group/open-code-review@${OCR_NPM_VERSION}
+USER 1000:1000
+WORKDIR /review

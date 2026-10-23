@@ -1,0 +1,57 @@
+{
+  "_reviewPresentation.BRrgIi0t.js": {
+    "file": "assets/reviewPresentation.BRrgIi0t.js",
+    "name": "reviewPresentation"
+  },
+  "index.html": {
+    "file": "assets/index.DbpCy0aB.js",
+    "name": "index",
+    "src": "index.html",
+    "isEntry": true,
+    "dynamicImports": [
+      "src/pages/CodeReviewPage.vue",
+      "src/pages/CodeReviewDetailPage.vue"
+    ],
+    "css": [
+      "assets/index.DHSpS5aK.css"
+    ],
+    "assets": [
+      "assets/Inter.var.C9xDBOS3.woff2",
+      "assets/Inter-Italic.var.BGHziHgI.woff2"
+    ]
+  },
+  "node_modules/frappe-ui/src/fonts/Inter/Inter-Italic.var.woff2": {
+    "file": "assets/Inter-Italic.var.BGHziHgI.woff2",
+    "src": "node_modules/frappe-ui/src/fonts/Inter/Inter-Italic.var.woff2"
+  },
+  "node_modules/frappe-ui/src/fonts/Inter/Inter.var.woff2": {
+    "file": "assets/Inter.var.C9xDBOS3.woff2",
+    "src": "node_modules/frappe-ui/src/fonts/Inter/Inter.var.woff2"
+  },
+  "src/pages/CodeReviewDetailPage.vue": {
+    "file": "assets/CodeReviewDetailPage.1YbQ1dQW.js",
+    "name": "CodeReviewDetailPage",
+    "src": "src/pages/CodeReviewDetailPage.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html",
+      "_reviewPresentation.BRrgIi0t.js"
+    ],
+    "css": [
+      "assets/CodeReviewDetailPage.CAv_eyGm.css"
+    ]
+  },
+  "src/pages/CodeReviewPage.vue": {
+    "file": "assets/CodeReviewPage.BzJz2_kb.js",
+    "name": "CodeReviewPage",
+    "src": "src/pages/CodeReviewPage.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html",
+      "_reviewPresentation.BRrgIi0t.js"
+    ],
+    "css": [
+      "assets/CodeReviewPage.Pi_z8R0C.css"
+    ]
+  }
+}

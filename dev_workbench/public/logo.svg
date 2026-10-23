@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5" />
+      <stop offset="100%" stop-color="#7c3aed" />
+    </linearGradient>
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.25" />
+    </filter>
+  </defs>
+  <!-- Background Rounded Rect -->
+  <rect x="6" y="6" width="108" height="108" rx="26" fill="url(#bgGrad)" filter="url(#shadow)" />
+  
+  <!-- Subtle Grid Pattern in background -->
+  <path d="M 30 15 L 30 105 M 60 15 L 60 105 M 90 15 L 90 105 M 15 30 L 105 30 M 15 60 L 105 60 M 15 90 L 105 90" 
+        stroke="rgba(255,255,255,0.06)" stroke-width="1.5" fill="none" />
+
+  <!-- Code/Branch Motif -->
+  <!-- Left Main Branch -->
+  <line x1="38" y1="28" x2="38" y2="92" stroke="#ffffff" stroke-width="6" stroke-linecap="round" />
+  
+  <!-- Curve to Right Feature Branch -->
+  <path d="M 38 64 C 38 48, 82 58, 82 42" stroke="url(#lineGrad)" stroke-width="6" stroke-linecap="round" fill="none" />
+  
+  <!-- Right Branch Upwards -->
+  <line x1="82" y1="42" x2="82" y2="28" stroke="#ffffff" stroke-width="6" stroke-linecap="round" />
+
+  <!-- Commits (Nodes) -->
+  <circle cx="38" cy="32" r="8" fill="#ffffff" stroke="#4f46e5" stroke-width="4" />
+  <circle cx="38" cy="64" r="7" fill="#38bdf8" stroke="#ffffff" stroke-width="3" />
+  <circle cx="38" cy="88" r="8" fill="#ffffff" stroke="#4f46e5" stroke-width="4" />
+  <circle cx="82" cy="32" r="8" fill="#ffffff" stroke="#7c3aed" stroke-width="4" />
+</svg>

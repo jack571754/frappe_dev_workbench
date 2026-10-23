@@ -1,0 +1,129 @@
+{
+ "doctype": "DocType",
+ "name": "Code Review Task",
+ "module": "Dev Workbench",
+ "autoname": "hash",
+ "engine": "InnoDB",
+ "field_order": [
+  "review_mode",
+  "branch",
+  "member",
+  "member_name",
+  "project",
+  "repository",
+  "head_sha",
+  "base_sha",
+  "committed_at",
+  "title",
+  "review_key",
+  "status",
+  "review_status",
+  "current_attempt",
+  "feedback_at",
+  "reviewer",
+  "reviewed_at"
+ ],
+ "fields": [
+  {
+   "fieldname": "review_mode",
+   "label": "审查方式",
+   "fieldtype": "Select",
+   "options": "commit\nscan",
+   "default": "commit"
+  },
+  {
+   "fieldname": "branch",
+   "label": "扫描分支",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "member",
+   "label": "member",
+   "fieldtype": "Link",
+   "options": "Project Member"
+  },
+  {
+   "fieldname": "member_name",
+   "label": "member_name",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "project",
+   "label": "project",
+   "fieldtype": "Link",
+   "options": "Project"
+  },
+  {
+   "fieldname": "repository",
+   "label": "repository",
+   "fieldtype": "Link",
+   "options": "Codeup Repository"
+  },
+  {
+   "fieldname": "head_sha",
+   "label": "head_sha",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "base_sha",
+   "label": "base_sha",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "committed_at",
+   "label": "提交时间",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "title",
+   "label": "title",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "review_key",
+   "label": "review_key",
+   "fieldtype": "Data",
+   "unique": 1
+  },
+  {
+   "fieldname": "status",
+   "label": "status",
+   "fieldtype": "Select",
+   "options": "queued\npreparing\nrunning\ncompleted\npartial\nfailed\ncancelled\ninterrupted",
+   "default": "queued"
+  },
+  {
+   "fieldname": "review_status",
+   "label": "review_status",
+   "fieldtype": "Select",
+   "options": "pending\nin_progress\ncompleted",
+   "default": "pending"
+  },
+  {
+   "fieldname": "current_attempt",
+   "label": "current_attempt",
+   "fieldtype": "Link",
+   "options": "Code Review Attempt"
+  },
+  {
+   "fieldname": "feedback_at",
+   "label": "feedback_at",
+   "fieldtype": "Datetime"
+  },
+  {
+   "fieldname": "reviewer",
+   "label": "reviewer",
+   "fieldtype": "Link",
+   "options": "User"
+  },
+  {
+   "fieldname": "reviewed_at",
+   "label": "reviewed_at",
+   "fieldtype": "Datetime"
+  }
+ ],
+ "permissions": [],
+ "track_changes": 0,
+ "sort_field": "creation",
+ "sort_order": "DESC"
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{ title or "研发工作台" }}</title>
+	<meta name="csrf-token" content="{{ csrf_token }}">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+	<script>
+		window.csrf_token = "{{ csrf_token }}";
+		window.boot = {{ boot | tojson }};
+	</script>
+</head>
+<body>
+	<div id="app"></div>
+	<div id="modals"></div>
+	<div id="popovers"></div>
+	<script>
+		(async () => {
+			const base = "/assets/dev_workbench/workbench/";
+			const manifestUrl = `${base}manifest.json?v=${Date.now()}`;
+
+			try {
+				const res = await fetch(manifestUrl, { cache: "no-store" });
+				if (!res.ok) throw new Error(`manifest fetch failed: ${res.status}`);
+				const manifest = await res.json();
+
+				const entry = Object.values(manifest).find((v) => v && v.isEntry);
+				if (!entry || !entry.file) throw new Error("manifest entry not found");
+
+				(entry.css || []).forEach((href) => {
+					const link = document.createElement("link");
+					link.rel = "stylesheet";
+					link.href = base + href;
+					document.head.appendChild(link);
+				});
+
+				const script = document.createElement("script");
+				script.type = "module";
+				script.crossOrigin = "";
+				script.src = base + entry.file;
+				document.body.appendChild(script);
+			} catch (err) {
+				console.warn("[dev_workbench] Manifest not found or fallback needed:", err);
+
+				const script = document.createElement("script");
+				script.type = "module";
+				script.src = base + "index.js";
+				document.body.appendChild(script);
+
+				const link = document.createElement("link");
+				link.rel = "stylesheet";
+				link.href = base + "index.css";
+				document.head.appendChild(link);
+			}
+		})();
+	</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+{
+ "doctype": "DocType",
+ "name": "Code Review Attempt",
+ "module": "Dev Workbench",
+ "autoname": "hash",
+ "engine": "InnoDB",
+ "field_order": [
+  "task",
+  "status",
+  "executor",
+  "lease_hash",
+  "lease_until",
+  "started_at",
+  "finished_at",
+  "materials",
+  "report",
+  "raw_report",
+  "error",
+  "tool_version"
+ ],
+ "fields": [
+  {
+   "fieldname": "task",
+   "label": "task",
+   "fieldtype": "Link",
+   "options": "Code Review Task"
+  },
+  {
+   "fieldname": "status",
+   "label": "status",
+   "fieldtype": "Data",
+   "default": ""
+  },
+  {
+   "fieldname": "executor",
+   "label": "executor",
+   "fieldtype": "Link",
+   "options": "Code Review Executor"
+  },
+  {
+   "fieldname": "lease_hash",
+   "label": "lease_hash",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "lease_until",
+   "label": "lease_until",
+   "fieldtype": "Datetime"
+  },
+  {
+   "fieldname": "started_at",
+   "label": "started_at",
+   "fieldtype": "Datetime"
+  },
+  {
+   "fieldname": "finished_at",
+   "label": "finished_at",
+   "fieldtype": "Datetime"
+  },
+  {
+   "fieldname": "materials",
+   "label": "materials",
+   "fieldtype": "Long Text"
+  },
+  {
+   "fieldname": "report",
+   "label": "report",
+   "fieldtype": "Long Text"
+  },
+  {
+   "fieldname": "raw_report",
+   "label": "raw_report",
+   "fieldtype": "Long Text"
+  },
+  {
+   "fieldname": "error",
+   "label": "error",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "tool_version",
+   "label": "tool_version",
+   "fieldtype": "Data"
+  }
+ ],
+ "permissions": [],
+ "track_changes": 0,
+ "sort_field": "creation",
+ "sort_order": "DESC"
+}
+

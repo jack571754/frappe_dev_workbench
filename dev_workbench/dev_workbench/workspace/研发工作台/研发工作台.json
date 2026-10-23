@@ -1,0 +1,168 @@
+{
+ "app": "dev_workbench",
+ "charts": [],
+ "content": "[{\"id\":\"header1\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>研发工作台</b></span>\",\"col\":12}},{\"id\":\"card1\",\"type\":\"card\",\"data\":{\"card_name\":\"项目与仓库\",\"col\":4}},{\"id\":\"card2\",\"type\":\"card\",\"data\":{\"card_name\":\"成员与身份\",\"col\":4}},{\"id\":\"card3\",\"type\":\"card\",\"data\":{\"card_name\":\"日志与日报\",\"col\":4}}]",
+ "creation": "2026-10-14 10:00:00.000000",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "octicon octicon-git-commit",
+ "idx": 1,
+ "is_hidden": 0,
+ "label": "研发工作台",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "项目与仓库",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "项目管理 (Project)",
+   "link_count": 0,
+   "link_to": "Project",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Codeup 代码库 (Codeup Repository)",
+   "link_count": 0,
+   "link_to": "Codeup Repository",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "成员与身份",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "项目成员 (Project Member)",
+   "link_count": 0,
+   "link_to": "Project Member",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Git 身份 (Git Identity)",
+   "link_count": 0,
+   "link_to": "Git Identity",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "请假豁免 (Absence Exemption)",
+   "link_count": 0,
+   "link_to": "Absence Exemption",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "日志与日报",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "每日活动日志 (Daily Activity Log)",
+   "link_count": 0,
+   "link_to": "Daily Activity Log",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "日报记录 (Daily Report)",
+   "link_count": 0,
+   "link_to": "Daily Report",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "缺勤记录 (Absence Record)",
+   "link_count": 0,
+   "link_to": "Absence Record",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "系统配置",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "研发工作台设置 (Dev Workbench Settings)",
+   "link_count": 0,
+   "link_to": "Dev Workbench Settings",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+   }
+ ],
+ "modified": "2026-10-14 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Dev Workbench",
+ "name": "研发工作台",
+ "owner": "Administrator",
+ "public": 1,
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Dev Workbench Manager"
+  }
+ ],
+ "sequence_id": 10.0,
+ "shortcuts": [
+  {
+   "color": "Indigo",
+   "icon": "octicon octicon-browser",
+   "label": "研发工作台看板",
+    "type": "URL",
+    "url": "/dev-workbench"
+  }
+ ],
+ "title": "研发工作台"
+}

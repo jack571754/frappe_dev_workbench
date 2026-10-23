@@ -1,0 +1,134 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "format:MEM-{####}",
+ "creation": "2026-10-14 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "member_name",
+  "is_manager",
+  "is_active",
+  "column_break_info",
+  "department",
+  "email",
+  "mobile",
+  "section_break_feishu",
+  "user_id",
+  "open_id",
+  "section_break_git",
+  "git_identities"
+ ],
+ "fields": [
+  {
+   "fieldname": "member_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "姓名",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_manager",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "是否管理者"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "启用"
+  },
+  {
+   "fieldname": "column_break_info",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "所属部门"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "邮箱"
+  },
+  {
+   "fieldname": "mobile",
+   "fieldtype": "Data",
+   "label": "手机号"
+  },
+  {
+   "fieldname": "section_break_feishu",
+   "fieldtype": "Section Break",
+   "label": "飞书关联信息"
+  },
+  {
+   "fieldname": "user_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "飞书 User ID"
+  },
+  {
+   "fieldname": "open_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "飞书 Open ID"
+  },
+  {
+   "fieldname": "section_break_git",
+   "fieldtype": "Section Break",
+   "label": "关联 Git 身份"
+  },
+  {
+   "fieldname": "git_identities",
+   "fieldtype": "Table",
+   "label": "Git 身份列表",
+   "options": "Project Member Git Identity"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-10-14 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Dev Workbench",
+ "name": "Project Member",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Dev Workbench Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "member_name"
+}
