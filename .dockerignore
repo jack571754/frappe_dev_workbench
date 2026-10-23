@@ -1,0 +1,14 @@
+README.md
+LICENSE
+.gitignore
+compose*.yaml
+
+# 本地开发目录与构建产物,不进镜像构建上下文(development/ 有 1G+ venv,会让 build 卡死)
+development/
+_refresh/
+tmp-assets/
+docs/
+tests/
+devcontainer-example/
+buildx-last.log
+*.log

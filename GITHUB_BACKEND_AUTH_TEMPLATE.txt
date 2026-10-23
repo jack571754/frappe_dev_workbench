@@ -1,0 +1,55 @@
+# GitHub 凭证配置模板（中文）
+# 用途：把 GitHub 访问凭证写入 backend 容器，供 bench get-app 拉取私有仓库使用
+# 注意：请勿把真实 token 提交到 Git 仓库
+
+========================================
+一、该用哪种 Token？
+========================================
+
+推荐顺序（从容易成功到更细粒度）：
+1) Classic Personal Access Token（经典 PAT）：
+   - 勾选权限：repo
+   - 这是最容易一次成功的方式
+
+2) Fine-grained Personal Access Token（细粒度 PAT）：
+   - Resource owner：必须是 jack571754（或仓库所属组织）
+   - Repository access：只选 product_sales_planning 仓库
+   - Repository permissions 至少包含：
+     - Contents: Read-only（或 Read and write）
+     - Metadata: Read-only（通常默认）
+   - 如果是组织仓库且启用了 SSO，需要额外点 Authorize SSO
+
+========================================
+二、填写下面变量
+========================================
+
+GITHUB_USERNAME=jack571754
+GITHUB_PAT=YOUR_PAT
+REPO_URL=https://github.com/jack571754/product_sales_planning.git
+
+========================================
+三、写入容器凭证（PowerShell 执行）
+========================================
+
+# 说明：
+# 1) 把下面命令中的 YOUR_PAT 替换为真实 token
+# 2) 不要把真实 token 发到聊天里
+
+wsl -d Ubuntu-24.04 -- docker exec -i frappe_docker-backend-1 bash -lc '
+set -e
+git config --global credential.helper store
+cat > ~/.git-credentials <<EOF
+https://github.com
+EOF
+chmod 600 ~/.git-credentials
+'
+
+========================================
+四、验证是否生效
+========================================
+
+wsl -d Ubuntu-24.04 -- docker exec frappe_docker-backend-1 bash -lc "git ls-remote https://github.com/jack571754/product_sales_planning.git | head -n 1"
+
+# 预期：
+# - 成功：输出一行 commit hash + refs
+# - 失败：如果是 403/404，说明 token 权限或 SSO 授权仍有问题
